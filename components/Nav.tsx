@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 
 function Logo() {
   return (
     <Link
       href="/"
-      className="flex items-center gap-2 font-display text-xl font-semibold text-neutral-900 transition-opacity duration-200 hover:opacity-70"
+      className="flex items-center gap-2 font-display text-xl font-semibold text-neutral-900 transition-opacity duration-200 hover:opacity-70 dark:text-neutral-100"
     >
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
         <path d="M12 2v6" strokeLinecap="round" />
@@ -29,29 +30,34 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-8">
+    <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:py-8">
       <Logo />
-      <nav className="flex items-center gap-8 font-body text-sm font-semibold uppercase tracking-wide">
-        {links.map(({ href, label }) => {
-          const isActive = pathname === href || pathname?.startsWith(`${href}/`);
-          return (
-            <Link
-              key={href}
-              href={href}
-              className={`relative pb-1 transition-colors duration-200 ${
-                isActive ? "text-orange-500" : "text-neutral-500 hover:text-neutral-900"
-              }`}
-            >
-              {label}
-              <span
-                className={`absolute inset-x-0 -bottom-[1px] h-[2px] bg-orange-500 transition-transform duration-300 ease-out ${
-                  isActive ? "scale-x-100" : "scale-x-0"
+      <div className="flex items-center gap-5 md:gap-8">
+        <nav className="flex items-center gap-5 font-body text-sm font-semibold uppercase tracking-wide md:gap-8">
+          {links.map(({ href, label }) => {
+            const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`relative pb-1 transition-colors duration-200 ${
+                  isActive
+                    ? "text-orange-500"
+                    : "text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100"
                 }`}
-              />
-            </Link>
-          );
-        })}
-      </nav>
+              >
+                {label}
+                <span
+                  className={`absolute inset-x-0 -bottom-[1px] h-[2px] bg-orange-500 transition-transform duration-300 ease-out ${
+                    isActive ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
+              </Link>
+            );
+          })}
+        </nav>
+        <ThemeToggle />
+      </div>
     </header>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+// import ThemeToggle from "@/components/ThemeToggle";
 
 function Logo() {
   return (
@@ -27,6 +28,7 @@ function Nav() {
           About
         </Link>
       </nav>
+      {/* <ThemeToggle /> */}
     </header>
   );
 }

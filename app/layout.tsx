@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Baloo_2, Inter } from "next/font/google";
+import ThemeScript from "@/components/ThemeScript";
 import "./globals.css";
-
-const display = Baloo_2({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "PrintForge — Discover what's possible with 3D printing",
@@ -28,8 +14,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <ThemeScript />
+        {children}
+      </body>
     </html>
   );
 }
