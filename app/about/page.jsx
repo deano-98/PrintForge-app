@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 function Logo() {
   return (
@@ -70,12 +71,14 @@ export default function About() {
       <Nav />
 
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 py-8 md:grid-cols-2 md:gap-16">
-        <div className="aspect-[4/3] w-full overflow-hidden bg-neutral-200">
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-neutral-300 to-neutral-500 text-center text-sm font-medium text-neutral-100">
-            Placeholder image:
-            <br />
-            3D-printed capitol, gears &amp; statue
-          </div>
+        <div className="aspect-4/3 w-full overflow-hidden bg-neutral-200">
+          <Image
+            src="/about-image.png"
+            alt="3D-printed capitol, gears & statue on about page"
+            width={800}
+            height={600}
+            className="object-cover" 
+          />
         </div>
 
         <div className="space-y-5">
@@ -114,11 +117,11 @@ export default function About() {
 
       <div className="mx-auto max-w-6xl border-t border-neutral-200 px-6" />
 
-      <section className="mx-auto max-w-6xl space-y-6 px-6 py-16">
-        <h2 className="font-display text-3xl font-bold text-neutral-900 md:text-4xl">
+      <section className="mx-auto max-w-6xl space-y-6 px-6 py-16 text-center">
+        <h2 className="font-display text-3xl font-bold text-neutral-900 md:text-4xl ">
           Our vision
         </h2>
-        <p className="max-w-3xl text-neutral-600">
+        <p className="max-w-3xl text-center text-neutral-600">
           At PrintForge, we believe that 3D printing is revolutionizing the
           way we create, prototype, and manufacture. Our platform serves as
           a bridge between designers and makers, enabling the sharing of
@@ -126,7 +129,8 @@ export default function About() {
           possible with 3D printing.
         </p>
         <div className="h-px w-24 bg-neutral-300" />
-        <p className="max-w-3xl text-neutral-600">
+
+        <p className="max-w-3xl text-center text-neutral-600">
           Whether you&rsquo;re a hobbyist looking for your next weekend
           project, an educator seeking teaching materials, or a professional
           designer wanting to share your creations, PrintForge provides the
