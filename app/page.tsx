@@ -5,37 +5,32 @@ import { featuredModels } from "@/lib/models";
 import Image from "next/image";
 
 /**
- * Split-circle collage: two overlapping circular "photo" placeholders with a
- * diagonal gap between them, echoing the offset ring graphic in the Figma hero.
+ * Hero collage: one circular image with a diagonal pillar overlay (center hub
+ * + bar). Hovering anywhere on the collage triggers the animation.
  */
 function HeroCollage() {
   return (
-    <div className="group relative mx-auto aspect-square w-full max-w-100 md:max-w-120 lg:max-w-140">
-      {/* Bottom-left circle */}
-      <div className="absolute inset-0 overflow-hidden rounded-full bg-neutral-200 transition-transform duration-700 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
+    <figure className="group relative mx-auto aspect-square w-full max-w-100 cursor-pointer md:max-w-120 lg:max-w-140">
+      <div className="relative h-full w-full overflow-hidden rounded-full bg-neutral-200 shadow-md transition-all duration-700 ease-out group-hover:-translate-y-1.5 group-hover:shadow-xl">
         <Image
           src="/hero-image.png"
           alt="3D-printed capitol, gears & statue"
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.14] group-hover:-rotate-3"
+          priority
         />
-      </div>
 
-      {/* Top-right circle, offset up and to the right */}
-      <div className="absolute inset-0 translate-y-[-18%] translate-x-[18%] overflow-hidden rounded-full bg-neutral-200 shadow-[0_0_0_8px_white] transition-transform duration-700 ease-out group-hover:translate-x-[20%] group-hover:translate-y-[-20%]">
-        <Image
-          src="/hero-image.png"
-          alt="Robot head & geometric prints"
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
-        />
+        {/* Diagonal pillar — center hub + bar */}
+        <div
+          className="pointer-events-none absolute inset-0 transition-transform duration-700 ease-out group-hover:rotate-[8deg]"
+          aria-hidden
+        >
+          <div className="absolute left-1/2 top-1/2 h-[145%] w-[7.5%] -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-white" />
+          <div className="absolute left-1/2 top-1/2 h-[28%] w-[28%] origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-white transition-transform duration-700 ease-out group-hover:scale-125" />
+        </div>
       </div>
-
-      {/* Diagonal gap band to echo the split-ring look */}
-      <div className="pointer-events-none absolute inset-[-4%] rotate-28 bg-white [clip-path:polygon(0%_44%,100%_44%,100%_56%,0%_56%)]" />
-    </div>
+    </figure>
   );
 }
 
