@@ -14,7 +14,7 @@ export default function Button({ href, children, variant = "outline", className 
 
   const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
     outline:
-      "border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white hover:shadow-lg hover:-translate-y-0.5 dark:border-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 dark:hover:text-neutral-900",
+      "border-2 border-neutral-900 text-neutral-900 hover:bg-orange-300 hover:text-neutral-900 hover:shadow-lg hover:-translate-y-0.5 dark:border-black dark:bg-white dark:text-neutral-900 dark:hover:bg-orange-300 dark:hover:text-neutral-900",
     primary:
       "border-2 border-orange-500 bg-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 hover:shadow-lg hover:-translate-y-0.5",
   };
