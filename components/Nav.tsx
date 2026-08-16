@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 
-
 function Logo() {
   return (
     <Link
@@ -25,13 +24,7 @@ function Logo() {
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  // const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
-
-  // const toggleTheme = () => {
-  //   setIsDark(!isDark);
-  //   document.documentElement.classList.toggle("dark");
-  // };
 
   const navLinks = [
     { href: "/models", label: "3D Models" },
@@ -40,7 +33,7 @@ export default function Nav() {
 
   return (
     <header className="relative z-50 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 md:py-8">
-      <Logo /> 
+      <Logo />
 
       {/* Desktop Navigation (Hidden on < 640px) */}
       <nav className="hidden items-center gap-8 font-body text-sm font-semibold uppercase tracking-wide sm:flex">
@@ -58,41 +51,55 @@ export default function Nav() {
         <ThemeToggle />
       </nav>
 
-      {/* Hamburger Toggle Button (Mobile Only < 640px) */}
+      {/* Animated Hamburger/X Button (Mobile Only < 640px) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 text-neutral-900 focus:outline-none dark:border-neutral-800 dark:text-white sm:hidden"
+        className="relative flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-neutral-200 text-neutral-900 focus:outline-none dark:border-neutral-800 dark:text-white sm:hidden"
         aria-label="Toggle Menu"
       >
-        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          {isOpen ? (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          )}
-        </svg>
+        <span
+          className={`h-0.5 w-5 bg-current transition-all duration-300 ease-in-out ${
+            isOpen ? "translate-y-2 rotate-45" : ""
+          }`}
+        />
+        <span
+          className={`h-0.5 w-5 bg-current transition-all duration-300 ease-in-out ${
+            isOpen ? "opacity-0" : "opacity-100"
+          }`}
+        />
+        <span
+          className={`h-0.5 w-5 bg-current transition-all duration-300 ease-in-out ${
+            isOpen ? "-translate-y-2 -rotate-45" : ""
+          }`}
+        />
       </button>
 
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="absolute left-0 right-0 top-full border-b border-neutral-200 bg-orange-500/70 px-6 py-6 backdrop-blur-md dark:border-neutral-800 dark:bg-orange-500/70 sm:hidden">
-          <div className="flex flex-col gap-4 font-body text-base font-medium">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setIsOpen(false)}
-                className={`py-1 transition-colors ${
-                  pathname === href ? "text-orange-500" : "text-neutral-700 dark:text-neutral-300"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+      {/* Mobile Menu Dropdown (Industry standard height & touch spacing) */}
+      <div
+        className={`absolute right-6 top-[calc(100%-0.5rem)] z-50 w-1/3 min-w-[200px] rounded-2xl border border-neutral-200 bg-white/95 p-6 shadow-2xl backdrop-blur-md transition-all duration-300 ease-out dark:border-neutral-800 dark:bg-neutral-950/95 sm:hidden ${
+          isOpen
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-2 opacity-0"
+        }`}
+      >
+        <div className="flex flex-col items-end gap-5 text-right font-body text-sm font-medium">
+          {navLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setIsOpen(false)}
+              className={`py-1.5 transition-colors ${
+                pathname === href ? "font-semibold text-orange-500" : "text-neutral-700 dark:text-neutral-300"
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
+          <div className="flex w-full justify-end border-t border-neutral-200/60 pt-3 dark:border-neutral-800/60">
             <ThemeToggle />
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
