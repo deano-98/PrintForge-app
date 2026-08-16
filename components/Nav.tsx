@@ -76,7 +76,7 @@ export default function Nav() {
 
       {/* Mobile Menu Dropdown (Industry standard height & touch spacing) */}
       <div
-        className={`absolute right-6 top-[calc(100%-0.5rem)] z-50 w-1/3 min-w-[200px] rounded-2xl border border-neutral-200 bg-white/95 p-6 shadow-2xl backdrop-blur-md transition-all duration-300 ease-out dark:border-neutral-800 dark:bg-neutral-950/95 sm:hidden ${
+        className={`absolute right-6 top-[calc(100%-0.5rem)] z-50 w-1/3 min-w-50 rounded-2xl border border-neutral-200 bg-black/80 p-6 shadow-2xl backdrop-blur-md transition-all duration-300 ease-out dark:border-neutral-800 dark:bg-neutral-950/95 sm:hidden ${
           isOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0"
@@ -89,13 +89,13 @@ export default function Nav() {
               href={href}
               onClick={() => setIsOpen(false)}
               className={`py-1.5 transition-colors ${
-                pathname === href ? "font-semibold text-orange-500" : "text-neutral-700 dark:text-neutral-300"
+                pathname === href ? "font-semibold text-orange-500" : "text-neutral-200 dark:text-neutral-300"
               }`}
             >
               {label}
             </Link>
           ))}
-          <div className="flex w-full justify-end border-t border-neutral-200/60 pt-3 dark:border-neutral-800/60">
+          <div className="flex w-full justify-end border-t border-orange-200/60 pt-3 dark:border-orange-800/60">
             <ThemeToggle />
           </div>
         </div>
