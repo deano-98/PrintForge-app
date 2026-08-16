@@ -14,10 +14,10 @@ function HeroCollage() {
           src="/hero-image.png"
           alt="3D-printed capitol, gears & statue"
           fill
-          sizes="(max-width: 1024px) 0px, 50vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
           className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.14] group-hover:-rotate-3"
           priority
-        />
+/>
 
         <div
           className="pointer-events-none absolute inset-0 transition-transform duration-700 ease-out group-hover:rotate-[8deg]"

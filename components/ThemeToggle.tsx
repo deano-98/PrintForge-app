@@ -21,7 +21,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 text-neutral-600 transition-colors duration-200 hover:border-neutral-900 hover:text-neutral-900 dark:border-neutral-600 dark:text-neutral-400 dark:hover:border-neutral-200 dark:hover:text-neutral-100"
+      className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 text-neutral-600 transition-colors duration-200 hover:border-neutral-900 hover:text-neutral-900 dark:border-neutral-600 dark:text-neutral-400 dark:hover:border-neutral-200 dark:hover:text-neutral-100"
     >
       {dark ? (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
