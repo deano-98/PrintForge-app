@@ -35,7 +35,7 @@ function HeroCollage() {
 function HeroBanner() {
   return (
     <div className="relative w-full lg:hidden">
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900 sm:aspect-[16/10]">
+      <div className="relative aspect-4/3 w-full overflow-hidden bg-neutral-900 sm:aspect-16/10">
         <Image
           src="/hero-image.png"
           alt="3D-printed capitol, gears & statue"
