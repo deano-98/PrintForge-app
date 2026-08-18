@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Nav from "@/components/Nav";
 // import ThemeToggle from "@/components/ThemeToggle";
 
 function Logo() {
@@ -16,22 +17,22 @@ function Logo() {
   );
 }
 
-function Nav() {
-  return (
-    <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-8">
-      <Logo />
-      <nav className="flex items-center gap-8 font-body text-sm font-semibold uppercase tracking-wide">
-        <Link href="/models" className="text-neutral-500 hover:text-neutral-900">
-          3D Models
-        </Link>
-        <Link href="/about" className="border-b-2 border-orange-500 pb-1 text-orange-500">
-          About
-        </Link>
-      </nav>
-      {/* <ThemeToggle /> */}
-    </header>
-  );
-}
+// function Nav() {
+//   return (
+//     <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-8">
+//       <Logo />
+//       <nav className="flex items-center gap-8 font-body text-sm font-semibold uppercase tracking-wide">
+//         <Link href="/models" className="text-neutral-500 hover:text-neutral-900">
+//           3D Models
+//         </Link>
+//         <Link href="/about" className="border-b-2 border-orange-500 pb-1 text-orange-500">
+//           About
+//         </Link>
+//       </nav>
+//       {/* <ThemeToggle /> */}
+//     </header>
+//   );
+// }
 
 const stats = [
   {
@@ -69,7 +70,7 @@ const stats = [
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-white font-body">
+    <main className="min-h-screen bg-white font-body text-neutral-900 dark:bg-black dark:text-neutral-100">
       <Nav />
 
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 py-8 md:grid-cols-2 md:gap-16">
@@ -117,22 +118,22 @@ export default function About() {
         ))}
       </section>
 
-      <div className="mx-auto max-w-6xl border-t border-neutral-200 px-6" />
+      <div className="mx-auto max-w-6xl border-t border-neutral-200 px-auto" />
 
-      <section className="mx-auto max-w-6xl space-y-6 px-6 py-16 text-center">
+      <section className="flex flex-col justify-center mx-auto max-w-6xl space-y-6 px-6 py-16 text-center">
         <h2 className="font-display text-3xl font-bold text-neutral-900 md:text-4xl ">
           Our vision
         </h2>
-        <p className="max-w-3xl text-center text-neutral-600">
+        <p className="mx-auto max-w-3xl text-neutral-600 text-left md:text-center">
           At PrintForge, we believe that 3D printing is revolutionizing the
           way we create, prototype, and manufacture. Our platform serves as
           a bridge between designers and makers, enabling the sharing of
           knowledge and creativity that pushes the boundaries of what&rsquo;s
           possible with 3D printing.
         </p>
-        <div className="h-px w-24 bg-neutral-300" />
+        {/* <div className="h-px w-full bg-neutral-300" /> */}
 
-        <p className="max-w-3xl text-center text-neutral-600">
+        <p className="mx-auto max-w-3xl text-neutral-600 text-left md:text-center">
           Whether you&rsquo;re a hobbyist looking for your next weekend
           project, an educator seeking teaching materials, or a professional
           designer wanting to share your creations, PrintForge provides the

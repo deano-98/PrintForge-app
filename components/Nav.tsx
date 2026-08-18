@@ -32,7 +32,7 @@ export default function Nav() {
   ];
 
   return (
-    <header className="relative z-50 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 md:py-8">
+    <header className="sticky top-0 bg-white/95 dark:bg-black/80 z-50 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 md:py-8">
       <Logo />
 
       {/* Desktop Navigation (Hidden on < 640px) */}

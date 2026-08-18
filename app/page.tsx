@@ -35,7 +35,7 @@ function HeroBanner() {
         src="/hero-image.png"
         alt="3D-printed capitol, gears & statue"
         fill
-        sizes="100vw"
+        sizes="(max-width: 1024px) 100vw, 50vw"
         className="object-cover object-top"
         priority
       />
